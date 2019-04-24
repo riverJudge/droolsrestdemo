@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:kie="http://drools.org/schema/kie-spring"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://drools.org/schema/kie-spring http://drools.org/schema/kie-spring.xsd">
+
+    <bean id="testService" class="com.sinosoft.TestService"></bean>
+    <bean id="kiePostProcessor"
+          class="org.kie.spring.annotations.KModuleAnnotationPostProcessor"/>
+    <bean id="DSRuntimeListener" class="com.sinosoft.drools.droolsrestdemo.util.DSRuntimeListener"/>
+    <!--<bean id="kiePostProcessor"
+          class="org.kie.spring.KModuleBeanFactoryPostProcessor"/>-->
+    <kie:kmodule id="kmodule">
+        <kie:kbase name="kbase" packages="rules">
+            <kie:ksession name="ksession" type="stateful">
+                <kie:ruleRuntimeEventListener ref="DSRuntimeListener">
+                </kie:ruleRuntimeEventListener>
+            </kie:ksession>
+            <kie:ksession name="ksessionStateless" type="stateless">
+                <kie:ruleRuntimeEventListener ref="DSRuntimeListener">
+                </kie:ruleRuntimeEventListener>
+            </kie:ksession>
+        </kie:kbase>
+    </kie:kmodule>
+
+</beans>

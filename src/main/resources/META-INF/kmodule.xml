@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="rules" packages="rules">
+        <ksession name="ksession-rule">
+         <listeners>
+                <ruleRuntimeEventListener type="com.drools.spring.util.DSRuntimeListener"></ruleRuntimeEventListener>
+            </listeners>
+        </ksession>
+    </kbase>
+</kmodule>-->
+
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+<kbase name="rules" packages="rules">
+    <ksession name="ksession-rules" type="stateful">
+
+ <listeners>
+               <ruleRuntimeEventListener type="com.sinosoft.drools.droolsrestdemo.util.DSRuntimeListener"></ruleRuntimeEventListener>
+           </listeners>   <!-- -->
+   </ksession>
+</kbase>
+</kmodule>
